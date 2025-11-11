@@ -26,6 +26,7 @@ import EditPost from './pages/EditPost';
 
 
 export default function App() {
+  const token = localStorage.getItem("token")
  
     
 
@@ -68,13 +69,13 @@ export default function App() {
           
           <Route
             path="/login"
-            element={<Login />}
+            element={token? <Navigate to="/"/>:<Login />}
             loader={LoginLoader}
             action={LoginAction}
             errorElement={<Error/>}
           />
           <Route path="register" 
-          element={<Register/>}
+          element={token? <Navigate to="/"/> :<Register/>}
           // loader={registerLoader}
           action={registerAction}
           />

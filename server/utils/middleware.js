@@ -9,7 +9,6 @@ module.exports = function authorize (req, res, next) {
   // Get token from header
   const token = req.header("Authorization");
   // const token = authHeader && authHeader.split('')[1];
-
   // Check if not token
   if (!token) {
     return res.status(403).json({ msg: "authorization denied" });

@@ -85,7 +85,7 @@ export default function PostDetails() {
                     <div key={comment._id} className="my-2">
                         <i>{comment.text}</i>
                         <h3>By: {comment.postedBy?.name}</h3>
-                        <h6 className="float-right font-light -translate-y-6">{comment.created}</h6>
+                        <h6 className="float-right font-light -translate-y-6">{new Date(comment.created).toLocaleDateString()}</h6>
                         {comment.postedBy?._id === decoded.id ? <button onClick={() => { handleCommentDelete(comment.id, {_id: comment._id})}} className="bg-red-300 rounded-full px-3 my-3 hover:bg-red-600">Delete</button> : ""}
                     </div>
                 ))

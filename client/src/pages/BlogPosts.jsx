@@ -43,7 +43,7 @@ export function Loader() {
                 <div className="">
                     <h3>{post.title}</h3>
                     <p>By: {post.postedBy?.name}</p>
-                    <p>created on: {post.createdAt}</p>
+                    <p>created on: {new Date(post.createdAt).toLocaleDateString()}</p>
                 </div>
                 <i className={`${post.category}`}>Category: {post.category}</i>
             </Link>

@@ -24,7 +24,7 @@ const {name, email, password} = req.body;
     console.log(newUser);
      
 
-    const token = jwt.sign( {id: newUser._id, name: newUser.name}, process.env.jwtSecret, { expiresIn: "1h" });
+    const token = jwt.sign( {id: newUser._id, name: newUser.name}, process.env.jwtSecret, { expiresIn: "600h" });
 
    return res.json(token);
 

@@ -50,19 +50,19 @@ export default function Register() {
                     name="name"
                     type="text"
                     placeholder="Name"
-                    className='w-full rounded-2 border-4 border-solid border-[000000] text-center mb-3 mt-3'
+                    className='w-full rounded-2 border-4 border-solid border-[000000] text-black text-center mb-3 mt-3'
                 />
                 <input
                     name="email"
                     type="email"
                     placeholder="Email address"
-                    className='w-full rounded-2 border-2 text-center mb-3 mt-3'
+                    className='w-full rounded-2 border-2 text-black text-center mb-3 mt-3'
                 />
                 <input
                     name="password"
                     type="password"
                     placeholder="Password"
-                    className='w-full rounded-2 border-2 text-center my-3'
+                    className='w-full rounded-2 border-2 text-black text-center my-3'
                 />
                 <button
                     disabled={navigation.state === "submitting"}

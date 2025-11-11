@@ -12,8 +12,8 @@ const app = express();
  app.use(express.json()); 
  app.use(express.urlencoded({extended: false}));
  
- mongoose.connect("mongodb://localhost:27017/blogspot").then(()=> console.log("connected")).catch((error)=> console.log(error.message));
-//  mongoose.connect(`mongodb+srv://osesthedon:${process.env.database_password}@finance-tracker-app.hafqyft.mongodb.net/?retryWrites=true&w=majority&appName=finance-tracker-app`).then(()=> console.log("connected")).catch((error)=> console.log(error.message));
+//  mongoose.connect("mongodb://localhost:27017/blogspot").then(()=> console.log("connected")).catch((error)=> console.log(error.message));
+ mongoose.connect(`${process.env.MONGODB_CONNECTION_STRING}`).then(()=> console.log("connected")).catch((error)=> console.log(error.message));
 
 app.use("/api", require("./routes/dashboard"));
  app.use("/api", require("./routes/router"));
