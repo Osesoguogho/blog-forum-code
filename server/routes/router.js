@@ -64,6 +64,14 @@ try {
   res.status(500).json("server error")
 }
  })
+ router.get("/verify", async(req, res) => {
+try {
+  return res.json({status:true})
+} catch (error) {
+  console.log(error.message);
+  res.status(500).json("server error")
+}
+ })
 
 
 
