@@ -1,8 +1,10 @@
 const express = require("express");
 const cors = require("cors");
+const crons = require("./utils/crons")
 const mongoose = require("mongoose");
 const env = require("dotenv");
 env.config();
+
 
 const app = express();
  const port = 3800;
@@ -11,6 +13,7 @@ const app = express();
  app.use('/uploads', express.static('./uploads'))
  app.use(express.json()); 
  app.use(express.urlencoded({extended: false}));
+ crons.start();
  
 //  mongoose.connect("mongodb://localhost:27017/blogspot").then(()=> console.log("connected")).catch((error)=> console.log(error.message));
  mongoose.connect(`${process.env.MONGODB_CONNECTION_STRING}`).then(()=> console.log("connected")).catch((error)=> console.log(error.message));
