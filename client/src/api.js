@@ -1,8 +1,9 @@
 import {redirect} from "react-router-dom";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 // get all post Api
 export async function getAllPosts (id) {
-    const url = id ? `http://localhost:3800/api/blogspot/${id}` : "http://localhost:3800/api/blogspot"
+    const url = id ? `${apiUrl}/api/blogspot/${id}` : `${apiUrl}/api/blogspot`
     const response = await fetch(url);
 
     if (!response.ok) throw {message:"unable to fetch data",
@@ -16,7 +17,7 @@ export async function getAllPosts (id) {
 
 // To get user post 
 export async function userPosts(token) {
-    const response = await fetch("http://localhost:3800/api/blogspot/user", {
+    const response = await fetch(`${apiUrl}/api/blogspot/user`, {
         headers: {
             Authorization: token
         }
@@ -35,7 +36,7 @@ export async function userPosts(token) {
 
 export async function postData(cred) {
     const token = localStorage.getItem("token");
-    const response = await fetch("http://localhost:3800/api/blogspot", {
+    const response = await fetch(`${apiUrl}/api/blogspot`, {
         method: "POST",
         header: {Authorization: token},
         body: JSON.stringify(cred)
@@ -56,7 +57,7 @@ export async function postData(cred) {
 // Api to edit post 
 
 export const editPost = async (id, cred) => {
-    const response = await fetch(`http://localhost:3800/api/update/blogspot/${id}`, {
+    const response = await fetch(`${apiUrl}/api/update/blogspot/${id}`, {
         method: "PATCH",
         body: cred
     })
@@ -78,7 +79,7 @@ export const editPost = async (id, cred) => {
 
 export async function deletePost(id) {
     // const token = localStorage.getItem("token");
-    await fetch(`http://localhost:3800/api/blogspot/delete/${id}`,
+    await fetch(`${apiUrl}/api/blogspot/delete/${id}`,
        { method: "DELETE"}
     );
 };
@@ -90,7 +91,7 @@ export async function deletePost(id) {
 export async function postComment(id, cred) {
     const token = localStorage.getItem("token");
     console.log(token);
-    const response = await fetch(`http://localhost:3800/api/blogspot/comments/${id}`,
+    const response = await fetch(`${apiUrl}/api/blogspot/comments/${id}`,
        { method: "PUT",
         headers:{
             Accept: "application/json",
@@ -111,7 +112,7 @@ export async function postComment(id, cred) {
 };
 
 export async function deleteComment(id, cred) {
-    const response = await fetch(`http://localhost:3800/api/blogspot/uncomments/${id}`,
+    const response = await fetch(`${apiUrl}/api/blogspot/uncomments/${id}`,
        { method: "PUT",
         headers:{
             Accept: "application/json",
@@ -129,7 +130,7 @@ export async function deleteComment(id, cred) {
 
 //Register and Login API
 export async function registerUser(cred) {
-    const response = await fetch("http://localhost:3800/api/register", {
+    const response = await fetch(`${apiUrl}/api/register`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -146,7 +147,7 @@ export async function registerUser(cred) {
 };
 // login API
 export  async function loginUser(cred) {
-    const response = await fetch("http://localhost:3800/api/login", {
+    const response = await fetch(`${apiUrl}/api/login`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -168,7 +169,7 @@ export async function RequireAuth() {
       const token = localStorage.getItem("token");
   
         try {
-         const res = await fetch("http://localhost:3800/api/verify", 
+         const res = await fetch(`${apiUrl}/api/verify`, 
              {
                method: "post",
                headers:{Authorization: token}}

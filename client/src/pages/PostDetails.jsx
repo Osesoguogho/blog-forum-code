@@ -7,6 +7,7 @@ import ImageSlider from "../components/ImageSlider";
 // import SimilarPost from "../components/SimilarPost";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export function Loader({params}) {
 
@@ -42,7 +43,7 @@ export default function PostDetails() {
 
    // api call to delete comment
  async function handleCommentDelete(id, cred) {
-   try{ const res =await axios.put(`http://localhost:3800/api/blogspot/uncomments/${post._id}`, cred);
+   try{ const res =await axios.put(`${apiUrl}/api/blogspot/uncomments/${post._id}`, cred);
     if (!res.data) {
         throw new Error("fail to delete");
     };

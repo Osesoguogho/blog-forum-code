@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Form, useActionData, useLocation, useNavigation, redirect, useNavigate } from 'react-router-dom';
 import  axios  from 'axios';
 import { getAllPosts } from '../api';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 
 // export async function Action({request}) {
@@ -81,7 +82,7 @@ const EditPost = () => {
         Authorization: token
     }};
       try {
-        const response = await axios.patch(`http://localhost:3800/api/blogspot/update/${id}`, posts, config);
+        const response = await axios.patch(`${apiUrl}/api/blogspot/update/${id}`, posts, config);
           if (!response.data) {
          throw new Error("unable to fetch data")
           }

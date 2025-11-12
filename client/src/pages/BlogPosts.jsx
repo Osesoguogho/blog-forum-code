@@ -1,7 +1,8 @@
 import React, {useState} from "react"
 import { Link, useSearchParams, useLoaderData } from "react-router-dom"
 // import { getAllPosts } from "../../api"
-import { getAllPosts } from "../api"
+import { getAllPosts } from "../api";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export function Loader() {
     return getAllPosts()
@@ -39,7 +40,7 @@ export function Loader() {
                     category: typeFilter
                 }}
             >
-                {post.images.length>0 && <img src={`http://localhost:3800/uploads/${post.images[0].filename}`} className=" my-2  object-cover " alt={post.images[0].originalname}/>}
+                {post.images.length>0 && <img src={`${apiUrl}/uploads/${post.images[0].filename}`} className=" my-2  object-cover " alt={post.images[0].originalname}/>}
                 <div className="">
                     <h3>{post.title}</h3>
                     <p>By: {post.postedBy?.name}</p>

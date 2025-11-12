@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {jwtDecode} from "jwt-decode";
 import { getAllPosts } from '../api';
 import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export default function Comment ({post}) {
@@ -27,7 +28,7 @@ async function handleSubmit() {
     const config =  { headers: {
         Authorization: token
     }};
-   try { const response = await axios.put(`http://localhost:3800/api/blogspot/comments/${id}`, comment,
+   try { const response = await axios.put(`${apiUrl}/api/blogspot/comments/${id}`, comment,
       config);
     if(!response.ok) throw {message: "unable to post data, please log in",
         status: response.status,

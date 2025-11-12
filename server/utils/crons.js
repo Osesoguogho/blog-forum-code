@@ -5,7 +5,7 @@ env.config();
 
  const crons = cron.schedule("*/14 * * * *", async() => {
     try {
-       await fetch(`${process.env.API_URL}/verify`);
+       await fetch(`${process.env.API_URL}/api/verify`);
        console.log("✔ API ping sent: ", new Date().toLocaleString())
     } catch(err) {
         console.log("✨API call failed: ", err.message)

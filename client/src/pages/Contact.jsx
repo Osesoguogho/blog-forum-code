@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Contact = () => {
   const [message, setMessage] = React.useState("");
@@ -11,12 +12,13 @@ const Contact = () => {
 
   const post = {name, email, phone, message};
   console.log(post);
+  
 
     async function handleSubmit(e) {
       e.preventDefault();
     setLoading(true);
     try{
-    const res = await fetch("http://localhost:3800/api/contact", {
+    const res = await fetch(`${apiUrl}/api/contact`, {
       method: "POST",
       headers: {Accept: "application/json",
         "Content-Type": "application/json"

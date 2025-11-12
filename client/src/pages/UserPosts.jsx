@@ -3,6 +3,7 @@ import { userPosts, RequireAuth, deletePost } from '../api';
 import { Link, useSearchParams, useLoaderData, Await, defer, redirect, useNavigate } from "react-router-dom";
 // import { RequireAuth } from '../utils';
 import PostDetails from './PostDetails';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 
 
@@ -47,7 +48,7 @@ const UserPosts = () => {
                 <Link
                     to={`/${post._id}`}
                 >
-                   {post.images.length> 0 && <img src={`http://localhost:3800/uploads/${post.images[0].filename}`} className=" my-2  object-cover " alt={post.images[0].originalname}/>}
+                   {post.images.length> 0 && <img src={`${apiUrl}/uploads/${post.images[0].filename}`} className=" my-2  object-cover " alt={post.images[0].originalname}/>}
                     <div className="">
                         <h3>{post.title}</h3>
                         <p>By: {post.postedBy?.name}</p>

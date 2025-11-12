@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import { getAllPosts } from '../api';
 import axios from "axios";
 const token = localStorage.getItem("token");
+const apiUrl = import.meta.env.VITE_API_URL;
 
 // export async function ComposeLoader ({request}) {
 //   await requireAuth(request);
@@ -78,7 +79,7 @@ const ComposePost = () => {
       Authorization: token
   }};
     try {
-      const response = await axios.post("http://localhost:3800/api/blogspot", formData, config);
+      const response = await axios.post(`${apiUrl}/api/blogspot`, formData, config);
         if (!response.data) {
        throw new Error("unable to fetch data")
         }
