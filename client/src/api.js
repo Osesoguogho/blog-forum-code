@@ -11,7 +11,6 @@ export async function getAllPosts (id) {
         statusText: response.statusText
     };
     const data = await response.json();
-    console.log(data);
     return data;
 };
 
@@ -28,7 +27,7 @@ export async function userPosts(token) {
     };
     
     const data = await response.json();
-    console.log(data);
+    console.log("users post: ", data);
     return data;
 };
 
@@ -45,7 +44,7 @@ export async function postData(cred) {
     if (response.ok) {
         const data = await response.json();
         getAllPosts();
-        console.log(data);
+        console.log("post data: ", data);
     }  else if(!response.ok){
         throw {message: "Post not sent",
            status: response.status,

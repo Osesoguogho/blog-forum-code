@@ -7,7 +7,6 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Comment ({post}) {
     const token = localStorage.getItem("token");
-    console.log(token);
     // const decoded = jwtDecode(token);
 const [comments, setComments] = useState("");
 console.log(post)
@@ -35,7 +34,7 @@ async function handleSubmit() {
         statusText: response.statusText
     };
  const data  = response.data;
- console.log(data);
+ console.log("data fetch from comment: ",data);
  await getAllPosts(id)}catch (err){
     console.log(err.message)
  }
